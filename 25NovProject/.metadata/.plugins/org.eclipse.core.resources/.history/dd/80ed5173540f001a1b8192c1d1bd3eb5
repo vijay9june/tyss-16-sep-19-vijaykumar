@@ -1,0 +1,12 @@
+package com.tyss.phonesimulatorapplicationdevelopment.dao;
+
+import java.awt.List;
+
+import com.tyss.phonesimulatorapplicationdevelopment.dto.MobileBean;
+
+public interface MobileDAO {
+	public List getAllMobileData();
+	public MobileBean searchMobileData(String name);
+	public void addData(MobileBean bean);
+	public int MobileData(int id);
+}

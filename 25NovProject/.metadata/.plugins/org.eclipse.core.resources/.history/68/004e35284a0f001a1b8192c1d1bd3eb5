@@ -1,0 +1,9 @@
+package com.tyss.phonesimulatorapplicationdevelopment.dao;
+
+public class MobileDao {
+	public List<MobileBean> getAllMobileData();
+	public MobileBean searchEmployeeData(int id);
+	public int insertEmployeeData(EmployeeBean bean);
+	public int updateEmployeeData(EmployeeBean bean);
+	public int deleteEmployeeData(int id);
+}

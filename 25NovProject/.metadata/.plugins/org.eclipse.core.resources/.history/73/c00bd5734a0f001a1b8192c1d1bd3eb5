@@ -1,0 +1,5 @@
+package com.tyss.phonesimulatorapplicationdevelopment.dao;
+
+public class MobileBean {
+
+}

@@ -1,0 +1,40 @@
+package com.tyss.phonesimulatorapplicationdevelopment;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.tyss.phonesimulatorapplicationdevelopment.dao.MobileDAO;
+import com.tyss.phonesimulatorapplicationdevelopment.dao.MobileDAOImpl;
+import com.tyss.phonesimulatorapplicationdevelopment.dto.MobileBean;
+import com.tyss.phonesimulatorapplicationdevelopment.util.MobileManager;
+
+public class App {
+
+	public static void main(String[] args) {
+		System.out.println("Press 1 to show all contacts");
+		System.out.println("Press 2 to Search for contact(using name)");
+		System.out.println("Press 3 to Operate on contact");
+
+
+		Scanner sc = new Scanner(System.in);
+		int ch = sc.nextInt();
+
+		switch (ch) {
+		case 1: 
+			MobileDAO dao = MobileManager.getMobileDAO();
+			List<MobileBean> result = dao.getAllMobileData();
+
+			for(MobileBean bean : result) {
+				System.out.println("Name: "+bean.getName());
+				System.out.println("Number: "+bean.getNumber());
+				System.out.println("Group: "+bean.getGroup());
+
+			}
+
+			break;
+			
+		}//end of switch
+
+	}
+
+}

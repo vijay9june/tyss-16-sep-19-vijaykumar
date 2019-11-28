@@ -1,0 +1,26 @@
+package com.tyss.phonesimulatorapplicationdevelopment;
+
+import java.awt.List;
+import java.util.Scanner;
+
+import com.tyss.phonesimulatorapplicationdevelopment.dao.MobileDAO;
+import com.tyss.phonesimulatorapplicationdevelopment.dao.MobileDAOImpl;
+import com.tyss.phonesimulatorapplicationdevelopment.dto.MobileBean;
+import com.tyss.phonesimulatorapplicationdevelopment.util.MobileManager;
+
+public class App {
+
+	public static void main(String[] args) {
+		System.out.println("Press 1 to show all contacts");
+		System.out.println("Press 2 to Search for contact(using name)");
+		System.out.println("Press 3 to Operate on contact");
+
+
+		Scanner scn = new Scanner(System.in);
+		int ch = scn.nextInt();
+
+		
+
+	}
+
+}
