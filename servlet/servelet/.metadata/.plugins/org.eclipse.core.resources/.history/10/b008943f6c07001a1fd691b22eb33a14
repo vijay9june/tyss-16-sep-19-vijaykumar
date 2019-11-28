@@ -1,0 +1,5 @@
+package com.tyss.webapp.dto;
+
+public @interface Data {
+
+}

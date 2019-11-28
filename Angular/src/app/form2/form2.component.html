@@ -1,0 +1,49 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form="ngForm" (ngSubmit)="EmployeData(form)">
+    <h1 class="text-center bg-dark text-white">Form2</h1>
+    <div class="form-group">
+        <input type="name" name="CandidateName" id="CandidateName" class="form-control" placeholder="Candidate name.." #CandidateName="ngModel" ngModel required>
+        <div *ngIf="CandidateName.touched && CandidateName.invalid">
+            <p class="alert alert-danger" *ngIf="CandidateName.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="Experiance" name="YOP" id="YOP" class="form-control" placeholder="Year of Experiances.." #YOP="ngModel" ngModel required>
+        <div *ngIf="YOP.touched && YOP.invalid">
+            <p class="alert alert-danger" *ngIf="YOP.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group" >
+        <p>Skills</p>
+        <input type="radio" name="java">java
+        <input type="radio" name="java">Angular
+        <input type="radio" name="java">SQL
+        <input type="radio" name="java">spring
+    </div>
+
+    <div class="form-group">
+        <input type="CCTC" name="CCTC" id="CCTC" class="form-control" placeholder="CCTC.." #CCTC="ngModel" ngModel required>
+        <div *ngIf="CCTC.touched && CCTC.invalid">
+            <p class="alert alert-danger" *ngIf="CCTC.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="ECTC" name="ECTC" id="ECTC" class="form-control" placeholder="ECTC.." #ECTC="ngModel" ngModel required>
+        <div *ngIf="ECTC.touched && ECTC.invalid">
+            <p class="alert alert-danger" *ngIf="ECTC.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="Rebcate" name="Rebcate" id="Rebcate" class="form-control" placeholder="Ready To Rebcate.." #Rebcate="ngModel" ngModel required>
+        <div *ngIf="Rebcate.touched && Rebcate.invalid">
+            <p class="alert alert-danger" *ngIf="Rebcate.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+            <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Schedule Interview</button>
+    </div>
+</form>

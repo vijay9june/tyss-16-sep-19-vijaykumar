@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="empwebapps">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <property name="context-root" value="empwebapps"/>
+        <property name="java-output-path" value="/empwebapps/build/classes"/>
+    </wb-module>
+</project-modules>

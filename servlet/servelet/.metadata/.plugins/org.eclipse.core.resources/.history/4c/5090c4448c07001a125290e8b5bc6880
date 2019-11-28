@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="" method="post">
+	
+	Id:<input name="id" type="text"><br>
+	Password:<input name="password" type="text"><br>
+	<input name = "rememberme" type="checkbox"><br>
+	<input name="login" type="submit"><br>
+	
+	<input name="register" type="button">
+	
+	</form>
+	
+	<a href="./register.html">Register</a>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form="ngForm" (ngSubmit)="ProductData(form)">
+    <h1 class="text-center bg-dark text-white">Product Details</h1>
+    <div class="form-group">
+        <input type="name" name="ProductName" id="ProductName" class="form-control" placeholder="Product Name.." #ProductName="ngModel" ngModel required>
+        <div *ngIf="ProductName.touched && ProductName.invalid">
+            <p class="alert alert-danger" *ngIf="ProductName.errors.required">*This field is required</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="price" name="ProductPrice" id="ProductPrice" class="form-control" placeholder="Product Price.." #ProductPrice="ngModel" ngModel required>
+        <div *ngIf="ProductPrice.touched && ProductPrice.invalid">
+            <p class="alert alert-danger" *ngIf="ProductPrice.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="description" name="ProductDescription" id="ProductDescription" class="form-control" placeholder=" Product Description.." #ProductDescription="ngModel" ngModel required>
+        <div *ngIf="ProductDescription.touched && ProductDescription.invalid">
+            <p class="alert alert-danger" *ngIf="ProductDescription.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="Url" name="ProductUrl" id="ProductUrl" class="form-control" placeholder=" Product Url.." #ProductUrl="ngModel" ngModel required>
+        <div *ngIf="ProductUrl.touched && ProductUrl.invalid">
+            <p class="alert alert-danger" *ngIf="ProductUrl.errors.required">*This field is required</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+    <button type="submit" >Add Product</button>
+    </div>
+</form>

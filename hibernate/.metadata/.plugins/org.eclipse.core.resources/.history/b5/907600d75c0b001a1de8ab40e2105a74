@@ -1,6 +1,0 @@
-package com.tyss.jdbcjpawithhibernateapp;
-
-public class Product {
-	private int pid;
-	private
-}

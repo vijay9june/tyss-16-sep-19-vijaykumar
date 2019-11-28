@@ -1,0 +1,59 @@
+package com.tyss.empwebapps.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class LoginPageServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		
+		String id = "";
+		Cookie[] cookies = req.getCookies();
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("alwaysRemember")) {
+				id = cookie.getValue();
+			}
+		}
+		
+		out.println("<form action='./login' method='post'>");
+		out.println("Password:<input name='password' type='text'><br>");
+		out.println("<input name = 'rememberme' type='checkbox' value='checked'>Remember Me<br>");
+		out.println("<input name='login' type='submit'>");
+		out.println("</form>");
+		out.println("<a href='./register.html'>Register</a>");
+		
+	}//end of doGet()
+}//end of LoginPageServlet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

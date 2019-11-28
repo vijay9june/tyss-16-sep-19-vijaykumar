@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="">
+	Id:<input name="id" type="text"><br>
+	Password:<input name="password" type="text"><br>
+	<input name = "remember me" type="checkbox"><br>
+	<input name="login" type="submit"><br>
+	
+	<input name="register" type="button">
+	</form>
+</body>
+</html>

@@ -1,0 +1,4 @@
+18,Sidh,80000,M
+15,Chandani,100055,F
+16,Gayatri,65000,F
+17,Lokesh,10000,M

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<jsp:useBean id="msg" class="java.lang.String" scope="request"/>
+<body>
+<a href="./home">Home</a><a style="float:right" href="./logout">Logout</a>
+<fieldset>
+<legend>Change Password</legend>
+	<form action="./changepassword" method="post">
+	<h1><%=msg %></h1>
+		<table align="center">
+			<tr>
+				<td>New Password </td>
+				<td><input type="password" name="password"></td>
+			</tr>	
+			<tr>
+				<td>Confirm Password </td>
+				<td><input type="password" name="confirmpassword"></td>
+			</tr>	
+			<tr>
+				<td><input type="reset" value="reset"></td>
+				<td><input type="submit" value="submit"></td>
+			</tr>
+		</table>
+	</form>
+</fieldset>
+</body>
+</html>
