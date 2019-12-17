@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/add">Add Product<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/modify">Modify Product</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/get-all">Get ALLProduct Details</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+<div class="col-md-4 offset-4 mt-5">
+  <input class="form-control" type="text" placeholder="Search here...." aria-label="Search" [(ngModel)]='search'>
+</div>
+<table class="table book-class table-bordered table-striped table-dark mt-5 mb-5 col-md-8 offset-2">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Update Product</th>
+        <th scope="col">Delete Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let product of products | filter : search'>
+       <td>{{product.pname}}</td>
+       <td>{{product.pprice}}</td>
+       <td>{{product.quantity}}</td>
+       <td><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" (click)="modify(product)">Edit</button></td>
+       <td><button class="btn btn-danger" (click)="delete(product)">Delete</button></td>
+      </tr>
+    </tbody>
+</table>
+
+<div class="modal" *ngIf="selectedProduct" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          
+<div class="mt-1 card card-body mb-1">
+<form action="" #form="ngForm" (ngSubmit)="editProduct(form)">
+      <h1 class="text-center bg-dark text-danger">Update Product</h1>
+      <input type="hidden" name="pid" #bid="ngModel" ngModel [(ngModel)]="selectedProduct.pid">
+      <div class="form-group">
+        <input type="text" name="pname" id="pname" #pname="ngModel" ngModel class="form-control" placeholder="Enter Product Name...">
+      </div>
+      <div class="form-group">
+        <input type="number" name="pprice" id="pprice" class="form-control" #pprice="ngModel" ngModel placeholder="Enter Price...">
+      </div>
+      <div class="form-group">
+        <input type="number" name="quantity" id="quantity" #quantity="ngModel" ngModel placeholder="Enter Quantity..." class="form-control">
+      </div>
+      <div class="from-group">
+        <button class="btn btn-success float-right" type="submit">Submit</button>
+      </div>
+</form>
+</div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>

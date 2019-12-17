@@ -1,0 +1,48 @@
+<div class="col-md-4 offset-md-4 mt-5 card">
+    <div class="card-header" style="background-color: cornflowerblue;">
+        <div class="card-title">
+        <h4>Register Here</h4>
+        </div>
+    </div>
+    <div class="card-body" style="margin-bottom: 70px;">
+        <form action="" #form='ngForm' (ngSubmit)='register(form)'>
+            <input type="text" name="name" id="name" #name='ngModel' 
+                ngModel required class="form-control mb-3" size="4" placeholder="Enter Name...">
+            <div class="form-group">
+            <input type="email" name="email" id="email" #email='ngModel' 
+                ngModel class="form-control mb-3" placeholder="Enter Email..."  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="email should contain @ and dot(.) Eg.,abc@gmail.com" size="30" required>
+            <div *ngIf="email.touched && email.invalid">
+                <p *ngIf="email.errors.required" class="text-danger">*this field is required</p>
+                <p class=" alert alert-danger" *ngIf="email.errors.pattern">email should contain lower case letter and @gmail and (.com)</p>
+            </div>
+            </div>
+            <div class="form-group">
+            <input type="number" name="phoneno" id="phoneno" #phoneno='ngModel' 
+            ngModel class="form-control mb-3" placeholder="Enter Phone Number..." pattern="[\d]{1,10}" title="phone number should contain only number and (+) Eg.,+919582669392" size="30" required>
+            <div *ngIf="phoneno.touched && phoneno.invalid">
+                <p *ngIf="phoneno.errors.required" class="text-danger">*this field is required</p>
+                <p class=" alert alert-danger" *ngIf="phoneno.errors.pattern">phone number should contain only number and (+) Eg.,+919582669392</p>
+            </div>
+            </div>
+            <div class="form-group">
+            <input type="password" name="password" id="password" #password='ngModel' 
+            ngModel class="form-control mb-3" placeholder="Enter Password..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="must contain atleast one number and one uppercase and one special characters and lowercase letters" required>
+            <div *ngIf="password.touched && password.invalid">
+                <p *ngIf="password.errors.required" class="text-danger">*this field is required</p>
+                <p class="alert alert-danger" *ngIf="password.errors.pattern">must contain atleast one number and one uppercase and one special characters and lowercase letters</p>
+            </div>
+            </div>
+            <div class="form-group">
+            <input type="text" name="role" id="role" #role='ngModel' 
+            ngModel class="form-control mb-3" placeholder="Enter Role...">
+            </div>
+            <input type="text" name="gender" id="gender" #gender='ngModel' 
+            ngModel class="form-control mb-3" placeholder="Enter Gender...">
+            <label>Date Of Joining</label>
+            <input type="date" name="doj" id="doj" #doj='ngModel' 
+            ngModel class="form-control mb-3" placeholder="Enter DOJ">
+            <button type="submit" class="btn btn-dark" >Register</button>
+        </form>
+    </div>
+</div>

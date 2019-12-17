@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/add">Add Product<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/modify">Modify Product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/get-all">Get ALLProduct Details</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="col-md-4 offset-4" *ngIf="message">
+    <h3 class="alert-danger" *ngIf="message">{{message}}</h3>
+</div>
+<form action="card card-body-4" style="margin-top: 100px;">
+<div class="col-md-4 offset-md-4 mt-4 card">
+    <h4>Add Product</h4>
+    <form [formGroup]="form" #loginForm='ngForm' (ngSubmit)='add(form)'>
+    <div class="form-group">
+            <input type="name" name="pname" id="pname" 
+            class="form-control" placeholder="Enter Product Name..." formControlName="pname">
+        <div *ngIf="pname.touched && pname.invalid">
+                <p *ngIf="pname.errors.required" class="text-danger">*this field is required</p>
+        </div>
+    </div>
+    <div class="form-group">
+            <input type="number" name="pprice" id="pprice" pattern="[\d]{1,9}"
+            class="form-control" placeholder="Enter Product Price..." formControlName="pprice">
+        <div *ngIf="pprice.touched && pprice.invalid">
+                <p *ngIf="pprice.errors.required" class="text-danger">*this field is required</p>
+                <p *ngIf="pprice.errors.pattern" class="text-danger">*this is not valid number</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="number" name="quantity" id="quantity" pattern="[\d]{1,9}"
+        class="form-control" placeholder="Enter Product Quantity..." formControlName="quantity">
+        <div *ngIf="quantity.touched && quantity.invalid">
+            <p *ngIf="quantity.errors.required" class="text-danger">*this field is required</p>
+            <p *ngIf="quantity.errors.pattern" class="text-danger">*this is not valid number</p>
+        </div>
+    </div>
+        <button class="btn btn-offset-4 bg-success" type="submit">Submit</button>
+    </form>
+</div>
+</form>
