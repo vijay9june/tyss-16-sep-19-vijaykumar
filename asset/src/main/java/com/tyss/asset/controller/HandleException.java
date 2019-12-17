@@ -1,0 +1,22 @@
+package com.tyss.asset.controller;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.tyss.asset.dto.AssetProductResponse;
+import com.tyss.asset.dto.AssetResponse;
+
+@RestControllerAdvice
+public class HandleException {
+
+	@ExceptionHandler(Exception.class)
+	public AssetResponse getException() {
+		AssetResponse response = new AssetResponse();
+		response.setStatusCode(501);
+		response.setMessage("Error in Code");
+		response.setDescription("Got an Exception");
+	
+		response.getAssetBeans();
+		return response;
+	}
+}
