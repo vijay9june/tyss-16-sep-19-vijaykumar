@@ -1,5 +1,0 @@
-package com.tyss.springcore.config;
-
-public class ComponentScanConfiguration {
-
-}

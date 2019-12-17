@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Spring\springrest\pom.xml"/>
 			<item value="D:\Spring\didemo"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -26,6 +27,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.tyss.asset"/>
+			<item value="com.tyss.springrest"/>
+			<item value="com.tyss.retailerspringmvc"/>
+			<item value="com.tyss.empspringmvc"/>
 			<item value="com.tyss.springmvc"/>
 			<item value="com.tyss.springcore"/>
 		</list>
@@ -33,6 +38,10 @@
 			<item value="com.tyss"/>
 		</list>
 		<list key="artifactId">
+			<item value="asset"/>
+			<item value="springrest"/>
+			<item value="retailerspringmvc"/>
+			<item value="empspringmvc"/>
 			<item value="springmvc"/>
 			<item value="springcore"/>
 		</list>

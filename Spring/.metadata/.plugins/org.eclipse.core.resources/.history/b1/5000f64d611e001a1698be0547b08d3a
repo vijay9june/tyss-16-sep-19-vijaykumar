@@ -1,0 +1,67 @@
+package com.tyss.asset.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tyss.asset.dao.AssetDAO;
+import com.tyss.asset.dto.AssetBean;
+
+@Service
+public class AssetServiceImpl implements AssetService{
+
+	@Autowired
+	private AssetDAO dao;
+
+	@Override
+	public boolean addAsset(AssetBean bean) {
+		if(bean.getName()==null||bean.getPassword()==null) {
+			return false;
+		}else if(bean.getPassword().length()<8) {
+			return false;
+		}
+		return dao.addAsset(bean);
+	}
+
+	@Override
+	public boolean registerAsset(AssetBean bean) {
+		if(bean.getName()==null||bean.getPassword()==null) {
+			return false;
+		}else if(bean.getPassword().length()<8) {
+			return false;
+		}
+		return dao.registerAsset(bean);
+	}
+
+
+	@Override
+	public AssetBean loginAsset(String email, String password) {
+		return dao.loginAsset(email, password);
+	}
+
+	@Override
+	public boolean modifyAsset(AssetBean bean) {
+		if(bean.getName()==null||bean.getPassword()==null) {
+			return false;
+		}else if(bean.getPassword().length()<8) {
+			return false;
+		}
+		return dao.modifyAsset(bean);
+	}
+
+	@Override
+	public boolean deleteAsset(int id) {
+		return dao.deleteAsset(id);
+	}
+
+	@Override
+	public AssetBean getAsset(int id) {
+		return dao.getAsset(id);
+	}
+
+	@Override
+	public List<AssetBean> getAllAsset() {
+		return dao.getAllAsset();
+	}
+}

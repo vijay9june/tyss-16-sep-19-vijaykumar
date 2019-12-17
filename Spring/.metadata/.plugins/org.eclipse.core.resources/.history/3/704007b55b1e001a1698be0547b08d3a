@@ -1,0 +1,5 @@
+package com.tyss.asset.dao;
+
+public interface AssetProductDao {
+
+}

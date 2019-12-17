@@ -1,7 +1,0 @@
-package com.tyss.springcore.di;
-
-public class Name {
-	public Name() {
-		
-	}
-}

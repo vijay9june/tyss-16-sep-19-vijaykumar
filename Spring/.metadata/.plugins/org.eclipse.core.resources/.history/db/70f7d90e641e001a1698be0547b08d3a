@@ -1,0 +1,40 @@
+package com.tyss.asset.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.tyss.asset.dao.AssetProductDAO;
+import com.tyss.asset.dto.AssetBean;
+import com.tyss.asset.dto.AssetProductBean;
+
+public class AssetProductServiceImpl implements AssetProductService {
+	@Autowired
+	private AssetProductDAO dao;
+
+	@Override
+	public boolean addAssetProduct(AssetProductBean bean) {
+		return false;
+	}
+
+	@Override
+	public boolean modifyAssetProduct(AssetProductBean bean) {
+		return false;
+	}
+
+	@Override
+	public boolean deleteAssetProduct(int pid) {
+		return false;
+	}
+
+	@Override
+	public AssetBean getAssetProduct(int id) {
+		return null;
+	}
+
+	@Override
+	public List<AssetProductBean> getAllAssetProduct() {
+		return null;
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.tyss.asset.dao;
+
+import java.util.List;
+
+import com.tyss.asset.dto.AssetBean;
+
+public interface AssetDAO {
+	public boolean addAsset(AssetBean bean);
+	public boolean registerAsset(AssetBean bean);
+	public boolean loginAsset(String email,String password);
+	public boolean modifyAsset(AssetBean bean);
+	public boolean deleteAsset(int id);
+	public AssetBean getAsset(int id);
+	public List<AssetBean> getAllAsset();
+}//end of EmployeeDAO

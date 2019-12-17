@@ -1,5 +1,0 @@
-package com.tyss.didemo.dao;
-
-public interface I {
-
-}

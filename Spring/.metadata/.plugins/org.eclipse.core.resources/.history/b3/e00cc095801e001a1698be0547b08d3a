@@ -1,0 +1,80 @@
+package com.tyss.asset.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.tyss.asset.dto.AssetProductBean;
+
+@Repository
+public class AssetProductDAOImpl implements AssetProductDAO {
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+	@Override
+	public boolean addAssetProduct(AssetProductBean bean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		try {
+			transaction.begin();
+			manager.persist(bean);
+			System.out.println(bean);
+			transaction.commit();
+			System.out.println(bean.getPid());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return false;
+		}
+	}
+	@Override
+	public boolean modifyAssetProduct(AssetProductBean apb) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		AssetProductBean assetProductBean = manager.find(AssetProductBean.class, apb.getPid());
+		assetProductBean.setPname(apb.getPname());
+		assetProductBean.setPprice(apb.getPprice());
+		assetProductBean.setNoOfProduct(apb.getNoOfProduct());
+		transaction.commit();
+		return true;
+	}
+
+	@Override
+	public boolean deleteAssetProduct(int pid) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		AssetProductBean bean = manager.find(AssetProductBean.class, pid);
+		if (bean != null) {
+			manager.remove(bean);
+			transaction.commit();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public AssetProductBean getAssetProduct(int pid) {
+		EntityManager manager = factory.createEntityManager();
+		AssetProductBean bean = manager.find(AssetProductBean.class, pid);
+		return bean;
+	}
+
+	@Override
+	public List<AssetProductBean> getAllAssetProduct() {
+		String jpql = "from AssetBean";
+		EntityManager manager = factory.createEntityManager();
+		TypedQuery<AssetProductBean> query = manager.createQuery(jpql, AssetProductBean.class);
+		List<AssetProductBean> assetProductBeans = query.getResultList();
+		return assetProductBeans;
+	}
+}

@@ -1,0 +1,147 @@
+package com.tyss.asset.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tyss.asset.dto.AssetBean;
+import com.tyss.asset.dto.AssetResponse;
+import com.tyss.asset.service.AssetService;
+@CrossOrigin(origins = "*",allowCredentials = "true")
+@RestController
+public class AssetController {
+	
+	@Autowired
+	private AssetService service;
+	
+	@PostMapping(path="/add", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse addAsset(@RequestBody AssetBean bean) {
+		AssetResponse response = new AssetResponse();
+		if(service.addAsset(bean)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data Added to the DB");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not Added to the DB");
+		}
+		return response;
+	}//end of addAsset
+	
+	@PostMapping(path="/register", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse registerAsset(@RequestBody AssetBean bean) {
+		AssetResponse response = new AssetResponse();
+		if(service.registerAsset(bean)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data Added to the DB");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not Added to the DB");
+		}
+		return response;
+	}//end of registerAsset
+	
+	@PostMapping(path="/login", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse loginAsset(@RequestParam("email") String email, 
+			@RequestParam("password") String password){
+		AssetResponse response = new AssetResponse();
+		AssetBean bean = service.login(email,password);
+		if(bean!=null) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data Added to the DB");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not Added to the DB");
+		}
+		return response;
+	}
+
+	@PutMapping(path="/modify", consumes = MediaType.APPLICATION_JSON_VALUE, 
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse modifyAsset(@RequestBody AssetBean bean) {
+		AssetResponse response = new AssetResponse();
+		if(service.modifyAsset(bean)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data Modify in the DB");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not Modify in the DB");
+		}
+		return response;
+	} //end of modifyAsset
+	
+	@DeleteMapping(path="/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse deleteAsset(@PathVariable("id")int id) {
+		AssetResponse response = new AssetResponse();
+		if(service.deleteAsset(id)) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data Deleted from  the DB");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not Deleted from the DB");
+		}
+		return response;
+	}//end of deleteAsset
+	
+	@GetMapping(path="/get", produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse getAsset(@RequestParam("id")int id) {
+		AssetResponse response = new AssetResponse();
+		AssetBean bean = service.getAsset(id);
+		if(bean!=null) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data found in the DB");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not found  in the DB");
+		}
+		return response;
+	}//end of getAsset
+	
+	@GetMapping(path="/get-all", produces = MediaType.APPLICATION_JSON_VALUE)
+	public AssetResponse getAllAsset() {
+		AssetResponse response = new AssetResponse();
+		List<AssetBean> beans = service.getAllAsset();
+		if(!beans.isEmpty()) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("Data found in the DB");
+			response.setassetBeans(beans);
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Data not found  in the DB");
+		}
+		return response;
+	}//end of getAllAsset
+
+}
+
+
+
+
+
+
